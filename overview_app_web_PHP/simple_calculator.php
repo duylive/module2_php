@@ -15,19 +15,40 @@
         </tr>
         <tr>
             <th><input type="number" name="first"></th>
-            <th><select>
+            <th><select name = "calculation">
                     <option value="add">Addition</option>
                     <option value="sub">Subtraction</option>
                     <option value="mul">Multiplication</option>
                     <option value="div">Division</option>
                 </select></th>
             <th><input type="number" name="second"></th>
-            <th><input type="submit" value="result"></th>
+            <th><input type="submit" name = "calculator"></th>
         </tr>
     </table>
 </form>
 <?php
-if ($_SERVER["REQUEST_METHOD"]=="POST") {
-    $first = $_POST["first"];
-    $second = $_POST["second"];
+if (isset($_POST["calculator"])) {
+    $first = (int)$_POST["first"];
+    $second = (int)$_POST["second"];
+
+    switch ($_POST["calculation"]) {
+        case "add":
+            $add = $first + $second;
+            echo $add;
+            break;
+        case "sub":
+            $sub = $first - $second;
+            echo $sub;
+            break;
+        case "mul":
+            $mul = $first * $second;
+            echo $mul;
+            break;
+        case "div":
+            $div = $first / $second;
+            echo $div;
+            break;
+    }
 }
+
+
